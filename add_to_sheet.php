@@ -12,5 +12,5 @@ $client->setScopes(['https://www.googleapis.com/auth/drive', 'https://www.google
 $accessToken = $client->fetchAccessTokenWithAssertion()["access_token"];
 
 // Connect to your Google Spreadsheet
-$spreadsheetId = "YOUR_SPREADSHEET_ID";
-$worksheetName = "YOUR_WORK
+$spreadsheetId = "AKfycbyHfjpgzvBcWivwEUhC80ZGJdLFhzbxf42FDHPfBhA5O-UfQHHjbMdpLxmnaaUzY9R0";
+$worksheetName = "Untitled spreadsheet"
