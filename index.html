@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Visitor Information</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// Retrieve visitor's IP address using ipinfo.io
+			$.get("https://ipinfo.io", function(response) {
+				var ip = response.ip;
+
+				// Send request to OpenCage Geocoder to get visitor's location, latitude, and longitude
+				$.get("get_location.php?ip=" + ip, function(response) {
+					var data = JSON.parse(response);
+
+					// Send data to Google Spreadsheet using Google Sheets API
+					$.post("add_to_sheet.php", {
+						ip: ip,
+						location: data.results[0].formatted,
+						latitude: data.results[0].geometry.lat,
+						longitude: data.results[0].geometry.lng
+					}, function(response) {
+						console.log(response);
+					});
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<!-- Your HTML code goes here -->
+</body>
+</html>
